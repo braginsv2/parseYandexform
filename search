@@ -1,0 +1,30 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.service import Service
+import time
+
+# Укажите путь к вашему веб-драйверу
+driver_path = 'C:\\Users\\Quant\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe'
+service = Service(driver_path)
+# Инициализация драйвера
+driver = webdriver.Chrome(service=service)
+
+# Открытие страницы с формой
+driver.get('https://award.ntcontest.ru/open_vote')  # Замените на URL вашей формы
+
+# Ожидание загрузки страницы
+time.sleep(2)
+text = "Текс, который ищем"
+name_field = driver.find_element(By.XPATH, "//*[contains(text(), '" + text + "')]") 
+
+if name_field:
+    print('Найдено')
+else:
+    print('Не найдено')
+# Ожидание перед закрытием браузера
+time.sleep(5)
+
+# Закрытие браузера
+driver.quit()
+
