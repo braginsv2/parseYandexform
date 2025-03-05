@@ -15,7 +15,7 @@ driver.get('https://award.ntcontest.ru/open_vote')  # Замените на URL 
 
 # Ожидание загрузки страницы
 time.sleep(2)
-text = "Текс, который ищем"
+text = "Текст, который ищем"
 name_field = driver.find_element(By.XPATH, "//*[contains(text(), '" + text + "')]") 
 
 if name_field:
