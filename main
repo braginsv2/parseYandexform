@@ -1,0 +1,58 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.service import Service
+import time
+
+# Укажите путь к вашему веб-драйверу
+driver_path = 'C:\\Users\\Quant\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe'
+service = Service(driver_path)
+# Инициализация драйвера
+driver = webdriver.Chrome(service=service)
+
+# Открытие страницы с формой
+driver.get('https://forms.yandex.ru/u/67c8049302848f1a3824f9ca/')  # Замените на URL вашей формы
+
+# Ожидание загрузки страницы
+time.sleep(2)
+
+# Заполнение поля "Имя"
+name_field = driver.find_element(By.XPATH, '/html/body/div[1]/div/main/form/div/div[1]/div[2]/div/span/span/input') 
+name_field.send_keys('Валерий')
+
+number_field = driver.find_element(By.XPATH, '/html/body/div[1]/div/main/form/div/div[2]/div[2]/div/span/span/input') 
+number_field.send_keys('+79135867896')
+
+email_field = driver.find_element(By.XPATH, '/html/body/div[1]/div/main/form/div/div[3]/div[2]/div/span/span/input')
+email_field.send_keys('1@yandex.ru')
+
+data_field = driver.find_element(By.XPATH, '/html/body/div[1]/div/main/form/div/div[4]/div[2]/div[1]/div[1]/div/span/span/input') 
+data_field.send_keys('16.10.1996')
+
+message_field = driver.find_element(By.XPATH, '/html/body/div[1]/div/main/form/div/div[5]/div[2]/div/span/span/textarea') 
+message_field.send_keys('Hello')
+
+click_field = driver.find_element(By.XPATH, '/html/body/div[1]/div/main/form/div/div[6]/div/div/div[1]/label')
+click_field.click()
+
+submit_button = driver.find_element(By.XPATH, '/html/body/div[1]/div/main/form/div/div[8]/button') 
+submit_button.click()
+
+text1_field = driver.find_element(By.XPATH, '/html/body/div[1]/div/main/form/div/div[1]/div[2]/div/span/span/input') 
+text1_field.send_keys('Короткий текст')
+
+var1_button = driver.find_element(By.XPATH, '/html/body/div[1]/div/main/form/div/div[2]/div[2]/div/div[1]/label[1]') 
+var1_button.click()
+
+var2_button = driver.find_element(By.XPATH, '/html/body/div[1]/div/main/form/div/div[2]/div[2]/div/div[1]/label[3]') 
+var2_button.click()
+
+end_button = driver.find_element(By.XPATH, '/html/body/div[1]/div/main/form/div/div[4]/button[2]') 
+end_button.click()
+
+# Ожидание перед закрытием браузера
+time.sleep(5)
+
+# Закрытие браузера
+driver.quit()
+
